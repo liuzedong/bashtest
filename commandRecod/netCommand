@@ -27,4 +27,10 @@ cd wireshark-2.0.4.tar.bz2
 ./configure
 make
 sudo make install
-sudo chmod 4755 /usr/local/bin/dumpcap	# 这个是可以以用户的身份进行运行该软件，其他用户需要加入这个组
+sudo chmod 4755 /usr/local/bin/dumpcap	# 这个是可以以用户的身份进行运行该软件，改变该命令的权限
+
+# 类似netstat的命令，但是必它更强大，的黑客命令netcat，检测端口的启动情况，并且还可以自动还一个服务进行监听
+netcat localhost 22 
+
+# 本机开启一个20000端口，别人可以访问这个端口
+netcat -l localhost 20000
