@@ -1,0 +1,30 @@
+# 记录一些网络相关的命令
+
+
+# 使用文字窗口去查看百度的页面
+links www.baidu.com
+
+# 下载命令
+wget url
+
+# 显示数据的流向，用来监听数据的
+# -i 指定监听的网卡，这里是无线网卡
+# -nn 直接以 IP 及 port number 显示,而非主机名与服务名称
+# port 指定监听的端口，不指定，就是监听所有的端口
+tcpdump -i wlan0 -nn port 21
+
+
+# 监听数据包，图形界面的,centos与ubuntu的安装方式
+yum install wireshark wireshark-gnome
+sudo apt-get install wireshark
+
+# 源码安装,参考地址 https://www.wireshark.org/lists/wireshark-dev/201404/msg00117.html
+wget https://1.na.dl.wireshark.org/src/wireshark-2.0.4.tar.bz2
+sudo apt-get install qt5-default
+sudo apt-get install libgtk-3-dev
+tar -xvf wireshark-2.0.4.tar.bz2
+cd wireshark-2.0.4.tar.bz2
+./configure
+make
+sudo make install
+sudo chmod 4755 /usr/local/bin/dumpcap	# 这个是可以以用户的身份进行运行该软件，其他用户需要加入这个组
