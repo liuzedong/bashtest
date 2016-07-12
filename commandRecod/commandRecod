@@ -16,3 +16,8 @@ sudo kill pid		#杀死掉上面查询出来的pid
 # 远程备份，就是将远程的资源拷贝到本地，或者将本地的资源拷贝到远程
 rsync -av user@remoteip:dir localdir
 rsync -av -e ssh root@192.168.18.12:/etc /backups
+
+# ubuntu上安装svn客户端，个人感觉，这个最好用啦，安装后最好重启下
+sudo add-apt-repository ppa:rabbitvcs/ppa
+sudo apt-get update
+sudo apt-get install rabbitvcs-nautilus3
