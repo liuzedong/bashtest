@@ -7,3 +7,8 @@ display [图片地址]
 
 # 输入密码的处叫作：登录显示，有LightDm和CDM两种，进行切换
 sudo dpkg-reconfigure gdm
+
+# 当桌面卡死的时候解决方案
+Ctrl + Alt + F1 	#切换到tty1
+ps -t tty7 			#找到tty7的pid
+sudo kill pid		#杀死掉上面查询出来的pid
