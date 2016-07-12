@@ -4,3 +4,6 @@ rename 's/ /_/g' *
 # 用来查看图片的命令
 eog [图片地址]
 display [图片地址]
+
+# 输入密码的处叫作：登录显示，有LightDm和CDM两种，进行切换
+sudo dpkg-reconfigure gdm
