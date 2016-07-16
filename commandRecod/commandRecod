@@ -21,3 +21,6 @@ rsync -av -e ssh root@192.168.18.12:/etc /backups
 sudo add-apt-repository ppa:rabbitvcs/ppa
 sudo apt-get update
 sudo apt-get install rabbitvcs-nautilus3
+
+# 修改文件的卷名
+sudo e2label /dev/sdb1 lzd
