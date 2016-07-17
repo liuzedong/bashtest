@@ -30,5 +30,5 @@ backupdir=answern\ iso\ JD\ 备份
 
 for dir in $backupdir
 do
-	 $bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir
+	 $bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1> /dev/null 2> /dev/null
 done

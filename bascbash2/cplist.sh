@@ -62,11 +62,11 @@ cd ${tagetDir}
 
 # 进行项目打jar包
 # jar -cvf ${projectName}.${jarDate}.${1}.jar * 1> /dev/null 2> /dev/null
-jar -cvf $jarName $forFileName $ 1> /dev/null 2> /dev/null
+jar -cvf $jarName $forFileName 1> /dev/null 2> /dev/null
 
 cp `ls | grep jar` $jardir
 
 # 返回原来的目录，并且删掉那个目录
 cd - 1> /dev/null 2> /dev/null
 rm -rf ${tagetDir}
-echo "打包成功：$jardir"
+echo "打包成功：$jardir/$jarName"
