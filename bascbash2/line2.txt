@@ -1,8 +1,0 @@
-WEB-INF/classes/com/acic/ebiz/echannel/app/pay/service/impl/PayCallbackServiceImpl.class
-WEB-INF/classes/com/acic/ebiz/echannel/app/service/impl/SendSinosoftMessageServiceImpl.class
-WEB-INF/classes/com/acic/ebiz/echannel/app/dao/TblPolicyIntegralDAO.class
-WEB-INF/classes/com/acic/ebiz/echannel/app/dao/impl/TblPolicyIntegralDAOImpl.class
-WEB-INF/classes/com/acic/ebiz/echannel/common/model/TblPolicyIntegral.class
-WEB-INF/classes/com/acic/ebiz/echannel/common/model/TblPolicyIntegralCriteria.class
-WEB-INF/classes/META-INF/routing/tbl_policy_integral-rules.xml
-WEB-INF/classes/sqlmap/echannel/common/tbl_policy_integral_SqlMap.xml
