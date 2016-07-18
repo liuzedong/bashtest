@@ -26,9 +26,10 @@ export bypy=/home/liuzedong/tools/baiduyunbypy/bypy/bypy.py
 # 指定要备份的目录
 backuprootdir=/media/liuzedong/0002239100048DF2/
 backupdir=answern\ iso\ JD\ 备份
-#backupdir=key\ test
 
 for dir in $backupdir
 do
-	 $bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1> /dev/null 2> /dev/null
+	echo "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份 \n\n" >> ./bypy.log
+	$bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1> ./bypy.log 2> ./bypy.log
+	echo "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份" >> ./bypy.log
 done
