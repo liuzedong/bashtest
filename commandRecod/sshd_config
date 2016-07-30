@@ -1,0 +1,122 @@
+# Package generated configuration file
+# See the sshd_config(5) manpage for details
+
+# What ports, IPs and protocols we listen for
+# SSH预设使用22这个port，也可以使用多个port，即重复使用port这个设定项目
+# 例如添加一个443端口，就添加一行 port 443
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+
+# 监听的主机的适配器，举例来说，如果有两个IP，分别是192.168.100.254，192.168.1.100 可以监听sshd，那么就这样写：ListenAddress 192.168.1.100
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+
+# 选择的SSH协议版本，可以是1也可以是2。
+# 如果想要支持旧版本V1，可以使用 Protocol 2,1
+Protocol 2
+# HostKeys for protocol version 2
+
+# 说明主机的Private Key放置的档案，预设使用下面的档案即可
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#Privilege Separation is turned on for security
+# 是否权限较低的程序来提供用户操作，我们知道sshd启动在22端口，因此启动程序输入root身份，那么，当其他哟南湖登录，这个设定值，会让
+# sshd产生一个该用户的sshd程序，这个对系统比较安全
+UsePrivilegeSeparation yes
+
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+
+# Logging
+# 当有人使用SSH 登录系统的时候，SSH会记录信息，这个信息要记录在daemon name里面
+SyslogFacility AUTH
+# 登录记录的等级
+LogLevel INFO
+
+# Authentication:
+# 当使用者连上SSH server之后，会出现输入密码的画面，在该画面中，在多久时间內没连接上SSH server那就强迫断开，没有指定单位，默认为秒
+LoginGraceTime 120
+# 是否运行root登录，预设是运行的，但是建议设置成为no
+#PermitRootLogin without-password
+PermitRootLogin no
+# 是否让sshd去检查用户家目录或相关文档的权限数据，这是为了担心使用者将某些重要的权限设错，可能会导致一些问题所致。
+StrictModes yes
+
+RSAAuthentication yes
+# 是否允许用户自行使用成对的密钥系统进行登入行为，仅针对version2.至于自制的公钥数据放置与用户家目录下的.ssh/authorized_keys內
+PubkeyAuthentication yes
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+# Don't read the user's ~/.rhosts and ~/.shosts files
+# 是否取消使用~/.ssh/.rhosts 来作为认证，当然是
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+# 这个选项专门是给version用的，所以不用
+RhostsRSAAuthentication no
+# similar for protocol version 2
+# 这个项目与上面的项目类似，不过是给version2使用的
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+# 是否忽略目录內的~/.ssh/known_hosts 这个档案所记录的住居内容，当然不要忽略，所以这里使用no，不过注释掉啦，不管啦
+#IgnoreUserKnownHosts yes
+
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+# 这一项设置为no，这个项目在是否允许空密码登录，当然不允许啦。
+PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+# 允许任何的密码认证，所以，任何login.conf规定的认证，均可使用，但目前我们比较喜欢使用PAM模块帮忙认证，因此这个选项可以设定为no。
+ChallengeResponseAuthentication no
+
+# Change to no to disable tunnelled clear text passwords
+# 密码验证当然是需要的，所以这里写yes。默认就是yes
+#PasswordAuthentication yes
+
+# 与Kerberos有关的参数设定，因为我们没有Kerberos主机，所以底下不用设置
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+
+# X11Forwarding项目，他可以让窗口的数据透过ssh信道来管理
+X11Forwarding yes
+X11DisplayOffset 10
+# 登录后是否显示一些信息呢？例如上次登录的时间，地点等等，预设是yes。就是打印出/etc/motd
+PrintMotd no
+# 显示上次登录的信息
+PrintLastLog yes
+# 当达成联机后，服务器会一直传送TCP封包给客户端以判断对方是否一直再联机，不过，如果联机时中间的路由器暂时停止服务几秒钟，也会让联机中断
+# 再这个情况下，任何一端死掉后，SSH可以立刻知道，而不会有将是进程的发生，但如果你的网络或路由器常常不稳定，可以设置为no
+TCPKeepAlive yes
+#UseLogin no
+
+# 同事运行几个尚未登入的联机画面？当我们连接上SSH，但是尚未输入密码是，这个就是联机画面，所以需要设置最大值，而已经建立连接的计算机不算再这个当中
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# 关于SFTP服务与其他的设定
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+# 利用PAM管理使用者认证有很多的好处，可以记录与管理，所以我们这里建议你使用UsePAM且ChallengeResponseAuthentication设置为no
+UsePAM yes

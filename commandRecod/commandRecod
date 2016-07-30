@@ -1,0 +1,26 @@
+# 使用正则来替换文件名，这个是用来替换空格的
+rename 's/ /_/g' *
+
+# 用来查看图片的命令
+eog [图片地址]
+display [图片地址]
+
+# 输入密码的处叫作：登录显示，有LightDm和CDM两种，进行切换
+sudo dpkg-reconfigure gdm
+
+# 当桌面卡死的时候解决方案
+Ctrl + Alt + F1 	#切换到tty1
+ps -t tty7 			#找到tty7的pid
+sudo kill pid		#杀死掉上面查询出来的pid
+
+# 远程备份，就是将远程的资源拷贝到本地，或者将本地的资源拷贝到远程
+rsync -av user@remoteip:dir localdir
+rsync -av -e ssh root@192.168.18.12:/etc /backups
+
+# ubuntu上安装svn客户端，个人感觉，这个最好用啦，安装后最好重启下
+sudo add-apt-repository ppa:rabbitvcs/ppa
+sudo apt-get update
+sudo apt-get install rabbitvcs-nautilus3
+
+# 修改文件的卷名
+sudo e2label /dev/sdb1 lzd
