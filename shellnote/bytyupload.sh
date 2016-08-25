@@ -3,33 +3,23 @@
 # 作者：刘泽栋
 # 时间：2016.07.17
 # 描述：备份，本地数据到百度有上，使用的bypy这个开源工具
-
+# 备注：每隔一个月，百度云的令牌就会失效，所以使用bypy.py -c  来取消令牌，重新生成
+# 添加任务 crontab -e        显示任务列表 contab -l
+# 每天晚上11点备份到百度云上
+# 0 23 * * * /home/liuzedong/git/bashtest/shellnote/bytyupload.sh
 
 export bypy=/home/liuzedong/tools/baiduyunbypy/bypy/bypy.py
 
-#$bypy upload /home/liuzedong/git/bashtest/shellnote/bytyupload.sh*
-#$bypy upload /home/liuzedong/git/bashtest/shellnote/abc.tar.gz ubuntu-answern/
-
-# 压缩文件
-# 指定压缩的路径
-#backuplocate=/media/liuzedong/0002239100048DF2/backup/
-#gitfilezip=git.zip
-#zip -r $backuplocate$gitfilezip /home/liuzedong/git/*
-
-# 上传
-#$bypy upload $backuplocate$gitfilezip ubuntu-answern/
-
-
-# 同步指定的目录
-#$bypy syncup /home/liuzedong/test ubuntu-answern/test
 
 # 指定要备份的目录
 backuprootdir=/media/liuzedong/0002239100048DF2/
 backupdir=answern\ iso\ JD\ 备份
+# 指定备份日志放在那个目录
+bypylogfile=/media/liuzedong/0002239100048DF2/answern/log/bypy.log
 
 for dir in $backupdir
 do
-	echo "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份 \n\n" >> ./bypy.log
-	$bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1> ./bypy.log 2> ./bypy.log
-	echo "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份" >> ./bypy.log
+	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份" >> $bypylogfile
+	$bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
+	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
 done
