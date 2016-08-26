@@ -1,0 +1,5 @@
+# 查看监听流量的命令
+sudo apt-get install ethstatus	#安装
+sudo ethstatus -i ppp0 #查看ADSL
+sudo ethstatus -i [wlan0 | eth0]	#监听制定网卡
+
