@@ -9,11 +9,12 @@
 
 if [ -n "$1" ];then
 	#将中文，进行urlencode，
-	q=`echo $1 | tr -d '\n' | od -An -t x1 | tr ' ' %`
+	q=`echo $1 | tr -d '\n' | od -An -t x1 | tr -d '\n' | tr ' ' %`
 	#echo $q
 
 	#使用get访问有道API,获得返回的json数据
 	resultJson=`curl -s -X GET "http://fanyi.youdao.com/openapi.do?keyfrom=DongDongXia&key=899140312&type=data&doctype=json&version=1.1&q=$q"`
+	#echo $resultJson
 
 	# 此处做一个简单判断，查看，你系统上是否有jq命令
 	jq --version 1> /dev/null 2> /dev/null
