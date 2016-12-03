@@ -13,7 +13,7 @@ export bypy=/home/liuzedong/tools/baiduyunbypy/bypy/bypy.py
 
 # 指定要备份的目录
 backuprootdir=/media/liuzedong/0002239100048DF2/
-backupdir=answern\ iso\ JD\ 备份
+backupdir=answern\ iso\ JD\ 备份\ PUBMI
 # 指定备份日志放在那个目录
 bypylogfile=/media/liuzedong/0002239100048DF2/answern/log/bypy.log
 
