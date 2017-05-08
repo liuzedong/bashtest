@@ -7,8 +7,11 @@
 # 添加任务 crontab -e        显示任务列表 contab -l
 # 每天晚上11点备份到百度云上
 # 0 23 * * * /home/liuzedong/git/bashtest/shellnote/bytyupload.sh
+#
+# 安装 : 如果,先前安装过 sudo pip uninstall bypy , 然后安装 sudo pip install -U bypy
 
-export bypy=/home/liuzedong/tools/baiduyunbypy/bypy/bypy.py
+# 使用的命令
+#export bypy=/home/liuzedong/tools/baiduyunbypy/bypy/bypy.py
 
 
 # 指定要备份的目录
@@ -20,6 +23,6 @@ bypylogfile=/media/liuzedong/0002239100048DF2/answern/log/bypy.log
 for dir in $backupdir
 do
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份" >> $bypylogfile
-	$bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
+	bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
 done
