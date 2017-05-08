@@ -26,3 +26,6 @@ do
 	bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
 done
+
+# 每次备份完, 重新更下 token, 可以不用每个月去 生成啦
+bypy refreshtoken
