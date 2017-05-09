@@ -28,4 +28,6 @@ do
 done
 
 # 每次备份完, 重新更下 token, 可以不用每个月去 生成啦
-bypy refreshtoken
+/usr/local/bin/bypy refreshtoken 1>> $bypylogfile 2>> $bypylogfile
+# 对日志文件, 进行换行
+echo "\n\n" >> $bypylogfile
