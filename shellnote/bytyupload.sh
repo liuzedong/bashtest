@@ -23,7 +23,7 @@ bypylogfile=/media/liuzedong/0002239100048DF2/answern/log/bypy.log
 for dir in $backupdir
 do
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份" >> $bypylogfile
-	bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
+	/usr/local/bin/bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
 done
 
