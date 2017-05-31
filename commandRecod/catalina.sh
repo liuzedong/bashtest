@@ -180,9 +180,9 @@ if $os400; then
   BASEDIR="$CATALINA_HOME"
   . "$CATALINA_HOME"/bin/setclasspath.sh
 else
-  if [ -r "$CATALINA_HOME"/bin/setclasspath.sh ]; then
-    BASEDIR="$CATALINA_HOME"
-    . "$CATALINA_HOME"/bin/setclasspath.sh
+  if [ -r "$CATALINA_HOME"/bin/setclasspath.sh ]; then #### 检测/home/liuzedong/tools/apache-tomcat-7.0.8/bin/setclasspath.sh 是否可读,这个是设置classpath的脚本, 是存在的 
+    BASEDIR="$CATALINA_HOME" ### BASEDIR=/home/liuzedong/tools/apache-tomcat-7.0.8
+    . "$CATALINA_HOME"/bin/setclasspath.sh  ### 这里是要是执行/home/liuzedong/tools/apache-tomcat-7.0.8/bin/setclasspath.sh 这个脚本的
   else
     echo "Cannot find $CATALINA_HOME/bin/setclasspath.sh"
     echo "This file is needed to run this program"
@@ -200,7 +200,7 @@ if [ ! -z "$CLASSPATH" ] ; then
   CLASSPATH="$CLASSPATH":
 fi
 
-# 
+# 因为上面的没走, 所以CLASSPATH= , 所以 CLASSPATH="CATALINA_HOME"/bin/bootstrap.jar = /home/liuzedong/tools/apache-tomcat-7.0.8/bin/bootstrap.jar
 CLASSPATH="$CLASSPATH""$CATALINA_HOME"/bin/bootstrap.jar
 
 if [ -z "$CATALINA_BASE" ] ; then
