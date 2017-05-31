@@ -115,12 +115,14 @@ if [ ! -x "$BASEDIR"/bin/setclasspath.sh ]; then
 fi
 
 # Don't override the endorsed dir if the user has set it previously
+#### JAVA_ENDORSED_DIRS没有定义,所以为空,判断进去, JAVA_ENDORSED_DIRS=/home/liuzedong/tools/apache-tomcat-7.0.8/endorsed ####
 if [ -z "$JAVA_ENDORSED_DIRS" ]; then
   # Set the default -Djava.endorsed.dirs argument
   JAVA_ENDORSED_DIRS="$BASEDIR"/endorsed
 fi
 
 # Set standard commands for invoking Java.
+#### 此处定义的JAVA的启动命令, 和jdb的命令 ####
 _RUNJAVA="$JRE_HOME"/bin/java
 if [ "$os400" != "true" ]; then
   _RUNJDB="$JAVA_HOME"/bin/jdb
