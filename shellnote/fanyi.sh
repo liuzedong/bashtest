@@ -20,12 +20,12 @@ if [ ! -n "$1" ];then
 fi
 
 BAIDUFANYI() {
-	Q=`echo $1 | tr -d '\n' | od -An -t x1 | tr -d '\n' | tr ' ' %`
+	Q=`echo $* | tr -d '\n' | od -An -t x1 | tr -d '\n' | tr ' ' %`
 	APPID=
 	KEY=
 	SALT=123
 	# MD5 编码
-	SIGN=`echo -n "$APPID$1$SALT$KEY" | md5sum | cut -d' ' -f1`
+	SIGN=`echo -n "$APPID$*$SALT$KEY" | md5sum | cut -d' ' -f1`
 	URL=`echo "https://fanyi-api.baidu.com/api/trans/vip/translate?q=$Q&from=auto&to=auto&appid=$APPID&salt=$SALT&sign=$SIGN"`
 
 	RESULT=`curl -s -X GET "$URL"`
@@ -40,16 +40,16 @@ BAIDUFANYI() {
 	echo "查询："
 	echo -e "    $SRC"
 	echo "翻译："
-	echo -e "    $DST"	
+	echo -e "    $DST"
 }
 
 YOUDAOFFANYI() {
-	Q=`echo $1 | tr -d '\n' | od -An -t x1 | tr -d '\n' | tr ' ' %`
+	Q=`echo $* | tr -d '\n' | od -An -t x1 | tr -d '\n' | tr ' ' %`
 	APPID=
 	KEY=
 	SALT=456
 	# MD5 编码
-	SIGN=`echo -n "$APPID$1$SALT$KEY" | md5sum | cut -d' ' -f1`
+	SIGN=`echo -n "$APPID$*$SALT$KEY" | md5sum | cut -d' ' -f1`
 	URL=`echo "https://openapi.youdao.com/api?q=$Q&from=auto&to=auto&appKey=$APPID&salt=$SALT&sign=$SIGN"`
 
 	RESULT=`curl -s -X GET "$URL"`
@@ -80,10 +80,10 @@ read -p "选择:" OPT
 
 case $OPT in
 	1)
-		BAIDUFANYI $1
+		BAIDUFANYI $*
 		;;
 	2)
-		YOUDAOFFANYI $1
+		YOUDAOFFANYI $*
 		;;
 	*)
 		echo "Usage: $0 [b|y] TEXT"
