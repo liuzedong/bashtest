@@ -15,15 +15,15 @@
 
 
 # 指定要备份的目录
-backuprootdir=/media/liuzedong/0002239100048DF2/
-backupdir=answern\ iso\ JD\ 备份\ PUBMI
+backuprootdir=/home/liuzedong/edisk/
+backupdir=备份\ 光华金科研发
 # 指定备份日志放在那个目录
-bypylogfile=/media/liuzedong/0002239100048DF2/answern/log/bypy.log
+bypylogfile=/home/liuzedong/edisk/光华金科研发/log/bypy.log
 
 for dir in $backupdir
 do
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份" >> $bypylogfile
-	/usr/local/bin/bypy syncup $backuprootdir$dir isoftstonePCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
+	/usr/local/bin/bypy syncup $backuprootdir$dir myPCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
 	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
 done
 

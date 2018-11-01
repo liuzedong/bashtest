@@ -50,8 +50,7 @@ YOUDAOFFANYI() {
 	SALT=456
 	# MD5 编码
 	SIGN=`echo -n "$APPID$*$SALT$KEY" | md5sum | cut -d' ' -f1`
-	URL=`echo "https://openapi.youdao.com/api?q=$Q&from=auto&to=auto&appKey=$APPID&salt=$SALT&sign=$SIGN"`
-
+	URL=`echo "https://openapi.youdao.com/api?q=$Q&from=auto&to=auto&appKey=$APPID&salt=$SALT&sign=$SIGN"` 
 	RESULT=`curl -s -X GET "$URL"`
 
 	#翻译文本
