@@ -4,7 +4,7 @@
 # 时间：2016.07.17
 # 描述：备份，本地数据到百度有上，使用的bypy这个开源工具
 # 备注：每隔一个月，百度云的令牌就会失效，所以使用bypy.py -c  来取消令牌，重新生成
-# 添加任务 crontab -e        显示任务列表 contab -l
+# 添加任务 crontab -e        显示任务列表 crontab -l
 # 每天晚上11点备份到百度云上
 # 0 23 * * * /home/liuzedong/git/bashtest/shellnote/bytyupload.sh
 #
@@ -18,7 +18,11 @@
 backuprootdir=/home/liuzedong/edisk/
 backupdir=备份\ 光华金科研发
 # 指定备份日志放在那个目录
-bypylogfile=/home/liuzedong/edisk/光华金科研发/log/bypy.log
+bypylogfile=/home/liuzedong/edisk/备份/log/bypy.log
+
+if [ ! -f $bypylogfile ]; then
+	touch $bypylogfile
+fi
 
 for dir in $backupdir
 do
