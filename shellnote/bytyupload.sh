@@ -16,7 +16,7 @@
 
 # 指定要备份的目录
 backuprootdir=/home/liuzedong/edisk/
-backupdir=备份\ 光华金科研发
+backupdir=(备份 光华金科研发 work 小帮规划)
 # 指定备份日志放在那个目录
 bypylogfile=/home/liuzedong/edisk/备份/log/bypy.log
 
@@ -24,11 +24,11 @@ if [ ! -f $bypylogfile ]; then
 	touch $bypylogfile
 fi
 
-for dir in $backupdir
+for dir in ${backupdir[@]}
 do
-	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录开始进行备份" >> $bypylogfile
+	echo -e "$dir `date "+%Y-%m-%d %H:%M"` ： 目录开始进行备份" >> $bypylogfile
 	/usr/local/bin/bypy syncup $backuprootdir$dir myPCbackup/$dir 1>> $bypylogfile 2>> $bypylogfile
-	echo -e "$dir `date "+%Y-%m-%d %H:%M"`： 目录结束备份\n" >> $bypylogfile
+	echo -e "$dir `date "+%Y-%m-%d %H:%M"` ： 目录结束备份\n" >> $bypylogfile
 done
 
 # 每次备份完, 重新更下 token, 可以不用每个月去 生成啦
