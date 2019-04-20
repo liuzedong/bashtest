@@ -1,13 +1,13 @@
 #!/bin/bash
 # Name: auto-zsh-theme.sh
 # Description: 自动替换zsh的模板，下面定义为每一分钟
-# */1 * * * * /opt/devtools/git/bashtest/shellnote/auto-zsh-theme.sh
+# */1 * * * * /opt/devtools/git/bashtest/shellnote/auto-zsh-theme.sh >/dev/null 2>&1
 # Author: Super DD
 # Version: 0.0.1
 # Datetime: 2019-04-20 15:07:57
 # Usage: auto-zsh-theme.sh
 
-zsh_themes_dir=$ZSH/themes
+zsh_themes_dir=$HOME/.oh-my-zsh/themes
 zshrc_file=$HOME/.zshrc
 zsh_theme_key=ZSH_THEME
 # 指定备份日志放在那个目录
@@ -30,4 +30,4 @@ zsh_new_theme=($zsh_theme_key="$zsh_themes")
 
 sed -i "s/$zsh_old_theme/$zsh_new_theme/" $zshrc_file
 
-echo -e "$(date "+%Y-%m-%d %H:%M") ：$zsh_old_theme------->$zsh_new_theme" >> $zsh_theme_log
+echo -e "$(date "+%Y-%m-%d %H:%M") ：$zsh_old_theme------------>>$zsh_new_theme" >> $zsh_theme_log
