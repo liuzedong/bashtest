@@ -6,7 +6,7 @@
 # 备注：每隔一个月，百度云的令牌就会失效，所以使用bypy.py -c  来取消令牌，重新生成
 # 添加任务 crontab -e        显示任务列表 crontab -l
 # 每天晚上11点备份到百度云上
-# 0 23 * * * /home/liuzedong/git/bashtest/shellnote/bytyupload.sh
+# 0 23 * * * /home/liuzedong/git/bashtest/shellnote/bytyupload.sh >/dev/null 2>&1
 #
 # 安装 : 如果,先前安装过 sudo pip uninstall bypy , 然后安装 sudo pip install -U bypy
 
