@@ -30,4 +30,4 @@ zsh_new_theme=($zsh_theme_key="$zsh_themes")
 
 sed -i "s/$zsh_old_theme/$zsh_new_theme/" $zshrc_file
 
-echo -e "$(date "+%Y-%m-%d %H:%M") ：$zsh_old_theme------------>>$zsh_new_theme" >> $zsh_theme_log
+# echo -e "$(date "+%Y-%m-%d %H:%M") ：$zsh_old_theme------------>>$zsh_new_theme" >> $zsh_theme_log
