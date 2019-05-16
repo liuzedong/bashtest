@@ -1,0 +1,6 @@
+javaFileName=""
+update=n
+# 安装命令集合
+#### terminator：替换命令行可以分屏,graphviz: IDEA的Uml插件需要
+commandList=(jq curl git atom meld terminator graphviz)
+
